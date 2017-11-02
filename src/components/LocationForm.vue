@@ -51,6 +51,7 @@ export default {
     padding: 0.5rem;
     width: 100%;
     margin-right: 1rem;
+    border: 1px solid #ccc;
   }
   form button {
     font-size: 1rem;
