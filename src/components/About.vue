@@ -1,16 +1,32 @@
 <template>
   <div class="about">
-    <h1>What is civi?</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis magni eius a accusamus, dignissimos nulla perferendis in distinctio dolor et animi quia, dolores ex nobis quisquam numquam expedita minima dicta.</p>
+    <h1>{{fields.title}}</h1>
+    <h2>{{fields.lead}}</h2>
+    <div class="body" v-html="fields.body"></div>
   </div>
 </template>
 
 <script>
+import client from '@/services/contentful'
+import marked from 'marked'
+
+let fields = {}
+
 export default {
   name: 'About',
   data () {
     return {
+      fields
     }
+  },
+  created () {
+    // get about entry. entry ID found in contentful admin UI
+    client.getEntry('66ayHnMlA42kwwCO66Sy0E')
+    .then((response) => {
+      this.fields = response.fields
+      this.fields.body = marked(this.fields.body)
+    })
+    .catch(console.error)
   }
 }
 </script>
