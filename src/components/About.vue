@@ -1,9 +1,9 @@
 <template>
-  <div class="about">
+  <main class="about">
     <h1>{{fields.title}}</h1>
     <h2>{{fields.lead}}</h2>
     <div class="body" v-html="fields.body"></div>
-  </div>
+  </main>
 </template>
 
 <script>
